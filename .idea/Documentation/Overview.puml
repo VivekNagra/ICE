@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Shop
+
+
+interface Products
+abstract class User
+class ShoppingCart
+class Item
+class Order
+
+Products <|-- Item : inherits
+
+User --> ShoppingCart
+User --> Admin
+User --> Customer
+
+Admin --> Products : access
+
+ShoppingCart --* Item : contains
+
+User --> Order : makes
+
+Order -> orderStatus : has a
+
+User -> usrStatus : has a
+
+
+ShoppingCart : boolean empty
+ShoppingCart : double totalPrice
+ShoppingCart : addItem()
+ShoppingCart : removeItem()
+
+User : String username
+User : String password
+User : int id
+User : ArrayList<object> purchasedItems
+User : purchase()
+
+Products : String name
+Products : String description
+Products : double price
+Products : int pID
+
+Item : String name
+Item : String description
+Item : int price
+
+Order : int id
+Order : double totalPrice
+
+
+ShoppingCart : ArrayList<Object> addedItems
+
+
+
+
+enum usrStatus {
+New
+Existing
+Returning
+}
+enum orderStatus {
+new
+accepted
+fullfilled
+}
+
+@enduml
