@@ -13,6 +13,19 @@ public class Item extends Products
         this.pID = pID;
     }
 
+    public double getPrice() {
+        return price;
+    }
 
-    
+    public String getName() {
+        return Name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getpID() {
+        return pID;
+    }
 }
