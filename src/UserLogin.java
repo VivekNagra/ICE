@@ -3,14 +3,16 @@ import java.util.Scanner;
 
 public class UserLogin
 {
-    public static String run() {
+    public static String run()
+    {
         Connection connection;
         String url = "jdbc:mysql://mysql11.unoeuro.com:3306/matechsolutions_dk_db_ice";
         String userName = "matechsolutions_dk";
         String password = "cenyktwx";
 
 
-        try {
+        try
+        {
 
             Scanner scan = new Scanner(System.in);
 
@@ -26,7 +28,8 @@ public class UserLogin
 
             ResultSet resultSet = statement.getResultSet();
 
-            if (resultSet.next()) {
+            if (resultSet.next())
+            {
                 System.out.println("successful login as " + resultSet.getString("userName"));
                 return resultSet.getString("userName");
             } else {
