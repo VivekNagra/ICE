@@ -1,13 +1,13 @@
 public class Item extends Products
 {
-    private String Name;
+    private String name;
     private String description;
     private double price;
     private int pID;
 
-    public Item(String Name, String description, double price, int pID)
+    public Item(int pID, String name, String description, double price)
     {
-        this.Name = Name;
+        this.name = name;
         this.description = description;
         this.price = price;
     }
@@ -24,11 +24,6 @@ public class Item extends Products
     public String getDescription()
     {
         return description;
-    }
-
-    public double getPrice()
-    {
-        return price;
     }
 
     public int getpID()
