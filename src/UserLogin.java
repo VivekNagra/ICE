@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class UserLogin
 {
-    public static String run()
+    public static String login()
     {
         Connection connection;
         String url = "jdbc:mysql://mysql11.unoeuro.com:3306/matechsolutions_dk_db_ice";
@@ -34,7 +34,7 @@ public class UserLogin
                 return resultSet.getString("userName");
             } else {
                 System.out.println("User does not exist - Please try again");
-                run();
+                login();
             }
 
         } catch (SQLException e) {
@@ -42,7 +42,6 @@ public class UserLogin
         }
 
         return null;
-
 
     }
 }
