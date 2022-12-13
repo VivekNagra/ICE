@@ -10,22 +10,29 @@ public class Item extends Products
         this.Name = Name;
         this.description = description;
         this.price = price;
-        this.pID = pID;
+    }
+
+
+    public String getName()
+    {
+        return name;
     }
 
     public double getPrice() {
         return price;
     }
-
-    public String getName() {
-        return Name;
-    }
-
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public int getpID() {
+    public double getPrice()
+    {
+        return price;
+    }
+
+    public int getpID()
+    {
         return pID;
     }
 }
