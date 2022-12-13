@@ -7,5 +7,7 @@ public class Main
         DB.setupConnection();
 
         ItemDB.setupItemDB();
+
+        RunProgram.runProgram();
     }
 }

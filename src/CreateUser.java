@@ -1,8 +1,7 @@
 import java.sql.*;
 import java.util.Scanner;
 
-public class CreateUser
-{
+public class CreateUser {
 
     public static String createUser()
     {
@@ -11,6 +10,7 @@ public class CreateUser
         String url = "jdbc:mysql://mysql11.unoeuro.com:3306/matechsolutions_dk_db_ice";
         String userName = "matechsolutions_dk";
         String password = "cenyktwx";
+
 
         try
         {
@@ -24,7 +24,7 @@ public class CreateUser
             System.out.println("Enter a password for your user: ");
             String user_password = scan.nextLine();
 
-            statement.execute("INSERT INTO users(username,password) VALUES(" + "'" + user_username + "'" + "," + "'" + user_password + "'" + ")");
+            statement.execute("INSERT INTO users(username,password) VALUES("+"'"+user_username+"'"+","+"'"+user_password+"'"+")");
             System.out.println("User Created");
 
             ResultSet resultSet = statement.getResultSet();
@@ -33,14 +33,14 @@ public class CreateUser
             {
                 System.out.println("successful login as " + resultSet.getString("userName"));
                 return resultSet.getString("userName");
-            } else
-            {
+            } else {
                 System.out.println("User does not exist - Please try again");
                 createUser();
             }
 
-        } catch (SQLException e) {
-
+        } catch (SQLException e)
+        {
+            e.printStackTrace();;
         }
         return null;
     }

@@ -47,7 +47,7 @@ public class ItemDB
             e.printStackTrace();
         }
 
-        showItems();
+
         //return null;
     }
 
@@ -55,7 +55,7 @@ public class ItemDB
     {
         for (Item i : itemsDB)
         {
-            System.out.println("[" + itemsDB.indexOf(i) + "] = " + i.getName());
+            System.out.println("[" + itemsDB.indexOf(i) + "] = " + i.toString());
         }
     }
 
