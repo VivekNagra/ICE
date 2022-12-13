@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ItemDB
 {
@@ -10,10 +11,12 @@ public class ItemDB
     public static Connection connection;
 
     public static ArrayList<Item> itemsDB = new ArrayList();
+    public static ArrayList<Item> searchedItems = new ArrayList();
 
-    public static void setupItemDB()
+
+    public static ArrayList setupItemDB()
     {
-
+        //set up of arraylist containing items
         setupConnection();
 
         String req = "SELECT * FROM items";
@@ -40,19 +43,79 @@ public class ItemDB
                 itemsDB.add(i);
                 //return itemsDB;
             }
-
-
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
 
-
-        //return null;
+        return itemsDB;
     }
 
-    private static void showItems()
+    //search for products
+    public static ArrayList<Item> searchItems() {
+        setupConnection();
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter your search: ");
+
+        String input = scan.nextLine();
+
+        String search = "SELECT * FROM items WHERE name LIKE " + "'" + "%" + input + "%" + "'" + " OR " + "description LIKE " + "'" + "%" + input + "%" + "'";
+
+        try {
+
+            Statement statement = connection.createStatement();
+            statement.execute(search);
+
+            ResultSet res = statement.getResultSet();
+
+            while (res.next()) {
+
+
+                int iID = res.getInt("id");
+
+                String iName = res.getString("name");
+
+                String iDescription = res.getString("description");
+
+                float iPrice = res.getFloat("price");
+
+                Item i = new Item(iID, iName, iDescription, iPrice);
+
+                searchedItems.add(i);
+            }
+            return searchedItems;
+
+        } catch (SQLException e)
+        {
+
+        }
+
+        return null;
+    }
+
+
+    public static Item getItem()
     {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Enter the name of the desired item: ");
+
+        String name = scan.nextLine();
+
+        for (Item i : itemsDB)
+        {
+            if (i.getName().contains(name))
+                return i;
+        }
+
+        return null;
+    }
+
+
+    public static void showItems()
+    {
+        //to display items in arraylist with for each loop
         for (Item i : itemsDB)
         {
             System.out.println("[" + itemsDB.indexOf(i) + "] = " + i.toString());

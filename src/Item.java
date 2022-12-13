@@ -12,13 +12,24 @@ public class Item extends Products
         this.price = price;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", pID=" + pID +
+                '}';
+    }
 
     public String getName()
     {
         return name;
     }
 
-    public double getPrice() {
+    public double getPrice()
+    {
         return price;
     }
     public String getDescription()

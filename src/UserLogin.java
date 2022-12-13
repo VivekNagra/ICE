@@ -13,7 +13,6 @@ public class UserLogin
 
         try
         {
-
             Scanner scan = new Scanner(System.in);
 
             System.out.println("Enter your user name: ");
