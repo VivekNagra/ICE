@@ -88,7 +88,7 @@ public class TextUI
         System.out.println("****************");
         System.out.println("What would you like to do: ");
         System.out.println("1.Search for item again");
-        System.out.println("2.Select a item");
+        System.out.println("2.Select a item (please enter pID of product)");
         System.out.println("3.return to Main Menu");
 
         int userInput = scan.nextInt();
