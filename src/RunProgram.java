@@ -5,7 +5,7 @@ public class RunProgram
 {
     static Customer currentCustomer;
 
-    public static void runShop() throws SQLException, FileNotFoundException
+    public static void runShop() throws Exception
     {
         TextUI.welcomeMenu(); // welcome the user to the program
 

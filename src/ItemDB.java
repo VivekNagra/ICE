@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -105,12 +106,14 @@ public class ItemDB
 
         System.out.println("Enter the name of the desired item: ");
 
-        int id = scan.nextInt();
+        String name = scan.next();
 
-        for (Item i : itemsDB)
+        for(Item i : itemsDB)
         {
-            if (i.getpID() == id);
+            if (i.getName().equals(name))
+            {
                 return i;
+            }
         }
 
         return null;
@@ -140,7 +143,7 @@ public class ItemDB
 
     }
 
-    public static void cartFunctions(Item i, Customer currentCustomer)
+    public static void cartFunctions(Item i, Customer currentCustomer) throws SQLException, FileNotFoundException
     {
         Scanner scan = new Scanner(System.in);
 
@@ -151,5 +154,24 @@ public class ItemDB
         System.out.println("****************");
 
         int userInput = scan.nextInt();
+
+        switch(userInput)
+        {
+            case 1:
+                Customer.addItem(currentCustomer, i);
+                System.out.println(i.getName() + " has been added to your cart");
+                System.out.println("What would you like to do now?");
+                cartFunctions(i, currentCustomer);
+
+                break;
+            case 2:
+                System.out.println(i.getDescription());
+                cartFunctions(i, currentCustomer);
+                break;
+            case 3:
+                TextUI.displayMainMenu(currentCustomer);
+                break;
+        }
+
     }
 }

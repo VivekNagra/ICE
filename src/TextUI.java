@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TextUI
@@ -15,7 +16,7 @@ public class TextUI
 
     }
 
-    public static Customer displayLogin()
+    public static Customer displayLogin() throws Exception
     {
         System.out.println("Welcome to the Web Shop");
         System.out.println("1. Login (type login)");
@@ -26,14 +27,20 @@ public class TextUI
         String userInp = scan.nextLine();
         String customer = null;
 
-        if(userInp.equalsIgnoreCase("login"))
+        try // trying to use a try catch to catch wrong input and recall displayLogin
         {
-            currentCustomer = UserLogin.login();
-        }
+            if (userInp.equalsIgnoreCase("login")) {
+                currentCustomer = UserLogin.login();
+            }
 
-        if(userInp.equalsIgnoreCase( "create user"))
+            if (userInp.equalsIgnoreCase("create user")) {
+                CreateUser.createUser();
+            }
+            return currentCustomer;
+        }catch (InputMismatchException e)
         {
-            CreateUser.createUser();
+            System.out.println("please enter a login method");
+            displayLogin();
         }
         return currentCustomer;
     }
@@ -46,7 +53,7 @@ public class TextUI
         System.out.println("1. Show catalogue");
         System.out.println("2. Show cart");
         System.out.println("3. Search for a item");
-        System.out.println("4. Select item (use pID nr)");
+        System.out.println("4. Select item");
         System.out.println("5. Exit shop");
 
 
@@ -88,7 +95,7 @@ public class TextUI
         System.out.println("****************");
         System.out.println("What would you like to do: ");
         System.out.println("1.Search for item again");
-        System.out.println("2.Select a item (please enter pID of product)");
+        System.out.println("2.Select a item (please enter name of product)");
         System.out.println("3.return to Main Menu");
 
         int userInput = scan.nextInt();

@@ -22,7 +22,7 @@ public class Customer implements User
         }
     }
 
-    public static void addItem(Item i)
+    public static void addItem(Customer currentCustomer, Item i)
     {
        Customer.addedItems.add(i) ;
     }
