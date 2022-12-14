@@ -54,7 +54,8 @@ public class TextUI
         System.out.println("2. Show cart");
         System.out.println("3. Search for a item");
         System.out.println("4. Select item");
-        System.out.println("5. Exit shop");
+        System.out.println("5. Show cart total");
+        System.out.println("6. Exit shop");
 
 
         int userInput = scan2.nextInt();
@@ -81,7 +82,12 @@ public class TextUI
                 break;
             case 4:
             itemSelection(currentCustomer);
+
             case 5:
+                Customer.cartTotal();
+                break;
+
+            case 6:
                 exitMenu();
                 break;
 

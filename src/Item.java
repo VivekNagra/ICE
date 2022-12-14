@@ -2,7 +2,7 @@ public class Item extends Products
 {
     private int pID;
     private String name;
-    private String description;
+    private String  description;
     private double price;
 
 

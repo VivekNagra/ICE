@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Customer implements User
 {
@@ -25,6 +26,19 @@ public class Customer implements User
     public static void addItem(Customer currentCustomer, Item i)
     {
        Customer.addedItems.add(i) ;
+    }
+
+    public static double cartTotal()
+    {
+        double total = 0;
+        for (Item i: Customer.addedItems)
+        {
+            total += i.getPrice();
+        }
+        System.out.println(total);
+
+
+        return total;
     }
 
 
