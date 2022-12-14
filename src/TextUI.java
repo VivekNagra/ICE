@@ -18,8 +18,8 @@ public class TextUI
     public static Customer displayLogin()
     {
         System.out.println("Welcome to the Web Shop");
-        System.out.println("1. Login");
-        System.out.println("2. Create Login");
+        System.out.println("1. Login (type login)");
+        System.out.println("2. Create Login (type create user)");
 
         Scanner scan = new Scanner(System.in);
 
