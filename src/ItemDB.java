@@ -36,23 +36,25 @@ public class ItemDB
 
                 String description = resultSet.getString("description");
 
-                int price = resultSet.getInt("price");
+                double price = resultSet.getInt("price");
 
                 Item i = new Item(iID, name, description, price);
 
                 itemsDB.add(i);
-                //return itemsDB;
             }
+            return itemsDB;
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
 
-        return itemsDB;
+        return null;
     }
 
     //search for products
-    public static ArrayList<Item> searchItems() {
+    public static ArrayList<Item> searchItems()
+    {
+
         setupConnection();
 
         Scanner scan = new Scanner(System.in);
@@ -62,33 +64,35 @@ public class ItemDB
 
         String search = "SELECT * FROM items WHERE name LIKE " + "'" + "%" + input + "%" + "'" + " OR " + "description LIKE " + "'" + "%" + input + "%" + "'";
 
-        try {
-
+        try
+        {
             Statement statement = connection.createStatement();
             statement.execute(search);
 
             ResultSet res = statement.getResultSet();
 
-            while (res.next()) {
-
-
+            while (res.next())
+            {
                 int iID = res.getInt("id");
 
                 String iName = res.getString("name");
 
                 String iDescription = res.getString("description");
 
-                float iPrice = res.getFloat("price");
+                double iPrice = res.getFloat("price");
 
                 Item i = new Item(iID, iName, iDescription, iPrice);
 
                 searchedItems.add(i);
+
+                System.out.println(searchedItems);
             }
+
             return searchedItems;
 
         } catch (SQLException e)
         {
-
+            System.out.println("no such item found");
         }
 
         return null;
@@ -101,11 +105,11 @@ public class ItemDB
 
         System.out.println("Enter the name of the desired item: ");
 
-        String name = scan.nextLine();
+        int id = scan.nextInt();
 
         for (Item i : itemsDB)
         {
-            if (i.getName().contains(name))
+            if (i.getpID() == id);
                 return i;
         }
 
@@ -127,11 +131,25 @@ public class ItemDB
         try
         {
             connection = DriverManager.getConnection(url, userName, password);
+            System.out.println("connection to catalogue made");
 
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
+
     }
 
+    public static void cartFunctions(Item i, Customer currentCustomer)
+    {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("****************");
+        System.out.println("1. Add to cart");
+        System.out.println("2. Show description of item ");
+        System.out.println("3. Return Home Page ");
+        System.out.println("****************");
+
+        int userInput = scan.nextInt();
+    }
 }

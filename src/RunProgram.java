@@ -1,7 +1,11 @@
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
+
 public class RunProgram
 {
-    static String currentCustomer;
-    public static void runShop()
+    static Customer currentCustomer;
+
+    public static void runShop() throws SQLException, FileNotFoundException
     {
         TextUI.welcomeMenu(); // welcome the user to the program
 
@@ -11,11 +15,4 @@ public class RunProgram
 
         //TextUI.mainMenu(); // show user with different options to how to proceed.
     }
-
-    /*public void runMainMenu()
-    {
-        String usrName = TextUI.displayLogin();
-        // wait with this part
-    }*/
-
 }

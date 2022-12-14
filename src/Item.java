@@ -1,9 +1,10 @@
 public class Item extends Products
 {
+    private int pID;
     private String name;
     private String description;
     private double price;
-    private int pID;
+
 
     public Item(int pID, String name, String description, double price)
     {
@@ -16,10 +17,10 @@ public class Item extends Products
     public String toString()
     {
         return "Item{" +
-                "name='" + name + '\'' +
+                "pID=" + pID +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", pID=" + pID +
                 '}';
     }
 

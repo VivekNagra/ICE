@@ -3,12 +3,14 @@ import java.util.Scanner;
 
 public class UserLogin
 {
-    public static String login()
+    static Customer customer1;
+    public static Customer login()
     {
         Connection connection;
         String url = "jdbc:mysql://mysql11.unoeuro.com:3306/matechsolutions_dk_db_ice";
         String userName = "matechsolutions_dk";
         String password = "cenyktwx";
+        int counter =  0;
 
 
         try
@@ -30,7 +32,9 @@ public class UserLogin
             if (resultSet.next())
             {
                 System.out.println("successful login as " + resultSet.getString("userName"));
-                return resultSet.getString("userName");
+                //return resultSet.getString("userName");
+                counter++;
+                return customer1 = new Customer(user_userName, user_password,counter);
             } else {
                 System.out.println("User does not exist - Please try again");
                 login();

@@ -1,13 +1,18 @@
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
+
 public class Main
 {
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws SQLException, FileNotFoundException
     {
 
         //DB.setupConnection();
 
-        ItemDB.setupItemDB();
+        ItemDB.setupItemDB(); // create objects
 
-        RunProgram.runShop();
+        RunProgram.runShop(); //
+
+
     }
 }

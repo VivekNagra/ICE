@@ -1,10 +1,12 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TextUI
 {
+    static Customer currentCustomer;
 
     public static void welcomeMenu()
     {
@@ -13,7 +15,7 @@ public class TextUI
 
     }
 
-    public static String displayLogin()
+    public static Customer displayLogin()
     {
         System.out.println("Welcome to the Web Shop");
         System.out.println("1. Login");
@@ -26,25 +28,26 @@ public class TextUI
 
         if(userInp.equalsIgnoreCase("login"))
         {
-            customer = UserLogin.login();
+            currentCustomer = UserLogin.login();
         }
 
         if(userInp.equalsIgnoreCase( "create user"))
         {
             CreateUser.createUser();
         }
-        return customer;
+        return currentCustomer;
     }
 
-    public static void displayMainMenu(String currentCustomer)
+    public static void displayMainMenu(Customer currentCustomer) throws SQLException, FileNotFoundException
     {
         Scanner scan2 = new Scanner(System.in);
 
         System.out.println("Main menu, what would you like to do");
         System.out.println("1. Show catalogue");
         System.out.println("2. Show cart");
-        System.out.println("3. Searh for a item");
-        System.out.println("4. Exit shop");
+        System.out.println("3. Search for a item");
+        System.out.println("4. Select item (use pID nr)");
+        System.out.println("5. Exit shop");
 
 
         int userInput = scan2.nextInt();
@@ -64,11 +67,14 @@ public class TextUI
                 displayMainMenu(currentCustomer);
                 break;
             case 3:
+                System.out.println("please enter name or description of item you seek");
                 ItemDB.searchItems();
                 promptEnterKey();
                 displayMainMenu(currentCustomer);
                 break;
             case 4:
+            itemSelection(currentCustomer);
+            case 5:
                 exitMenu();
                 break;
 
@@ -77,7 +83,7 @@ public class TextUI
     }
 
 
-    public static void ItemSelection (String currentCustomer) throws FileNotFoundException, SQLException {
+    public static void itemSelection (Customer currentCustomer) throws FileNotFoundException, SQLException {
         Scanner scan = new Scanner(System.in);
         System.out.println("****************");
         System.out.println("What would you like to do: ");
@@ -91,13 +97,13 @@ public class TextUI
             case 1:
                 ItemDB.searchItems();
                 promptEnterKey();
-                ItemSelection(currentCustomer);
+                itemSelection(currentCustomer);
                 break;
             case 2:
                 Item item = ItemDB.getItem();
                 System.out.println("You have selected" + '\n' + item.getName());
 
-                //mediaFunctions(media, currentUser);
+                ItemDB.cartFunctions(item, currentCustomer);
                 break;
             case 3:
                 displayMainMenu(currentCustomer);
