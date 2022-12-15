@@ -70,7 +70,7 @@ public class TextUI
 
             case 2:
                 //insert shopping cart data
-                Customer.displayAddedItems();
+                Customer.displayAddedItems(currentCustomer);
                 promptEnterKey();
                 displayMainMenu(currentCustomer);
                 break;
