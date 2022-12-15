@@ -35,9 +35,6 @@ public class Customer implements User
         {
             total += i.getPrice();
         }
-        System.out.println(total);
-
-
         return total;
     }
 

@@ -33,7 +33,7 @@ public class TextUI
                 currentCustomer = UserLogin.login();
             }
 
-            if (userInp.equalsIgnoreCase("create user")) {
+            else if (userInp.equalsIgnoreCase("create user")) {
                 CreateUser.createUser();
             }
             return currentCustomer;
@@ -70,7 +70,7 @@ public class TextUI
 
             case 2:
                 //insert shopping cart data
-                System.out.println("no cart right now");
+                Customer.displayAddedItems();
                 promptEnterKey();
                 displayMainMenu(currentCustomer);
                 break;
@@ -84,7 +84,9 @@ public class TextUI
             itemSelection(currentCustomer);
 
             case 5:
-                Customer.cartTotal();
+                System.out.println(Customer.cartTotal());
+                promptEnterKey();
+                displayMainMenu(currentCustomer);
                 break;
 
             case 6:

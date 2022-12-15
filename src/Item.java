@@ -8,6 +8,7 @@ public class Item extends Products
 
     public Item(int pID, String name, String description, double price)
     {
+        this.pID = pID;
         this.name = name;
         this.description = description;
         this.price = price;
