@@ -102,9 +102,9 @@ public class TextUI
         Scanner scan = new Scanner(System.in);
         System.out.println("****************");
         System.out.println("What would you like to do: ");
-        System.out.println("1.Search for item again");
-        System.out.println("2.Select a item (please enter name of product)");
-        System.out.println("3.return to Main Menu");
+        System.out.println("1. Search for item again");
+        System.out.println("2. Select a item (please enter name of product)");
+        System.out.println("3. return to Main Menu");
 
         int userInput = scan.nextInt();
 

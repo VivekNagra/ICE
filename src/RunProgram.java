@@ -13,6 +13,6 @@ public class RunProgram
 
         TextUI.displayMainMenu(currentCustomer);
 
-        //TextUI.mainMenu(); // show user with different options to how to proceed.
+        
     }
 }

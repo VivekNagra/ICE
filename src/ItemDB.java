@@ -151,6 +151,7 @@ public class ItemDB
         System.out.println("1. Add to cart");
         System.out.println("2. Show description of item ");
         System.out.println("3. Return Home Page ");
+        System.out.println("4. Select another item to view");
         System.out.println("****************");
 
         int userInput = scan.nextInt();
@@ -162,7 +163,6 @@ public class ItemDB
                 System.out.println(i.getName() + " has been added to your cart");
                 System.out.println("What would you like to do now?");
                 cartFunctions(i, currentCustomer);
-
                 break;
             case 2:
                 System.out.println(i.getDescription());
@@ -171,7 +171,8 @@ public class ItemDB
             case 3:
                 TextUI.displayMainMenu(currentCustomer);
                 break;
-        }
+            case 4:
+        }        TextUI.itemSelection(currentCustomer);
 
     }
 }
